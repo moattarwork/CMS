@@ -1,9 +1,9 @@
 <h3>Contact List</h3>
 <div class="btn-group mt-2">
-  <a class="btn btn-primary active" routerLink="/new">New Contact</a>
+  <a id="newButton" class="btn btn-primary active" routerLink="/new">New Contact</a>
 </div>
 <div class="mt-2">
-  <table class="table table-striped table-sm">
+  <table id="contactList" class="table table-striped table-sm">
     <thead>
       <tr>
         <th>Name</th>
@@ -18,10 +18,7 @@
         <td>{{ contact.dateOfBirth | date: 'dd/MM/yyyy' }}</td>
         <td>{{ contact.email }}</td>
         <td>
-          <button
-            class="btn btn-primary btn-sm"
-            routerLink="/edit/{{ contact.contactId }}"
-          >
+          <button class="btn btn-primary btn-sm" routerLink="/edit/{{ contact.contactId }}">
             Edit
           </button>
         </td>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, pipe } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ContactService } from '../core/services/contact.service';
 import { Contact } from '../core';
 import { Router } from '@angular/router';

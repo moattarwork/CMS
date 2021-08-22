@@ -25,9 +25,7 @@ export const initConfig = () => async () => {
   declarations: [],
   imports: [
     CommonModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    HttpClientModule
   ],
   providers: [
     { provide: Config, useFactory: getConfig },
