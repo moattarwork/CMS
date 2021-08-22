@@ -1,0 +1,41 @@
+<form [formGroup]="contactForm">
+  <div class="mb-3">
+    <label for="firstNameInput" class="form-label">First Name</label>
+    <input id="firstNameInput" type="text" class="form-control" formControlName="firstName" />
+    <div *ngIf="this.contactForm.get('firstName')!.invalid && (firstName!.dirty || firstName!.touched)"
+      class="alert alert-warning">
+      <div *ngIf="firstName!.errors?.required">First Name is required</div>
+      <div *ngIf="firstName!.errors?.maxlength">First Name must be at most 100 characters long.</div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="surnameInput" class="form-label">Surname</label>
+    <input type="text" class="form-control" id="surnameInput" formControlName="surname" />
+    <div *ngIf="firstName!.invalid && (firstName!.dirty || firstName!.touched)" class="alert alert-warning">
+      <div *ngIf="firstName!.errors?.required">Surname is required</div>
+      <div *ngIf="firstName!.errors?.maxlength">Surname must be at most 100 characters long.</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="dateOfBirthInput" class="form-label">Date Of Birth</label>
+    <input type="date" class="form-control" id="dateOfBirthInput" formControlName="dateOfBirth" />
+    <div *ngIf="dateOfBirth!.invalid && (dateOfBirth!.dirty || dateOfBirth!.touched)" class="alert alert-warning">
+      <div *ngIf="dateOfBirth!.errors?.required">Date of birth is required</div>
+      <div *ngIf="dateOfBirth!.errors?.pastDate">Date of birth should be in the past</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="emailInput" class="form-label">Email</label>
+    <input type="email" class="form-control" id="emailInput" formControlName="email" />
+    <div *ngIf="email!.invalid && (email!.dirty || email!.touched)" class="alert alert-warning">
+      <div *ngIf="email!.errors?.required">Email is required</div>
+      <div *ngIf="email!.errors?.email">Email format should be valid</div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-primary btn-sm" [disabled]="contactForm.invalid" (click)="save()">
+      Save
+    </button>
+  </div>
+</form>
