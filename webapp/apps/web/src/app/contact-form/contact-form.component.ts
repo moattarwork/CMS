@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { Contact, ContactRequest } from '../core';
+import { ContactRequest } from '../core';
 import { formatDate } from '@angular/common'
 
 export function pastDateValidator(): ValidatorFn {
