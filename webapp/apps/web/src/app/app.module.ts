@@ -11,16 +11,39 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app.routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent, ContactListComponent, NewContactComponent, EditContactComponent, ContactFormComponent],
+  declarations: [
+    AppComponent,
+    ContactListComponent,
+    NewContactComponent,
+    EditContactComponent,
+    ContactFormComponent,
+  ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
     CoreModule.forRoot(),
     BrowserAnimationsModule,
-    ToastrModule.forRoot()],
+    ToastrModule.forRoot(),
+    StoreModule.forRoot(
+      {},
+      {
+        metaReducers: !environment.production ? [] : [],
+        runtimeChecks: {
+          strictActionImmutability: true,
+          strictStateImmutability: true,
+        },
+      }
+    ),
+    EffectsModule.forRoot([]),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
